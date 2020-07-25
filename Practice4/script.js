@@ -32,6 +32,8 @@ try {
 function checkAge(){
     let userAge = prompt('Enter your age.', '');
 
+    userAge = userAge.trim();
+
     if (userAge == '') {
         throw new Error('The field is empty! Please enter your age');
     }
@@ -106,7 +108,7 @@ function showUser(inputId) {
     }
 
     if(inputId < 0 || isNaN(inputId)) {
-        throw new Error('showUser: incorect id, it must be positive.');
+        throw new Error('ID must not be negative: ' + inputId);
     }
     return userId;
 }
@@ -119,15 +121,14 @@ function showUsers(inputIds){
             resultShowUsers[i] = showUser(inputIds[i]);
         }
     } catch(e) {
-        throw e;
+        console.log(e.name + e.message);
     }
 
     return resultShowUsers;
 }
 
 try {
-    let fifthTaskinput1 = prompt('Enter user id: ', '');
-    let resultFifthTask1 = showUser(fifthTaskinput1);
+    let resultFifthTask1 = showUser(-1);
     
     console.log(resultFifthTask1);
 } catch(e) {
@@ -136,7 +137,7 @@ try {
 
 try {
     let resultFifthTask2 = showUsers([7, 44, 22]);
-    //let resultFifthTask2 = showUsers([7, 44, -12, 22]);
+    //let resultFifthTask2 = showUsers([7, -12, 44, 22]);
     
     console.log(resultFifthTask2);
 } catch(e) {
