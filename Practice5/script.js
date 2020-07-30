@@ -1,4 +1,6 @@
 // Task 1
+console.log('Task 1')
+
 function propsCount(currentObject) {
     return Object.keys(currentObject).length;
 }
@@ -9,9 +11,11 @@ let mentor = {
     direction: "web-development", 
 };
 
-console.log(`Task 1 result: ${ propsCount(mentor) }` );  
+console.log(`Result: ${ propsCount(mentor) }` );  
 
 // Task 2
+console.log(' ');
+
 let user = {
     firstName: 'Petro',
     secondName: 'Husak',
@@ -41,6 +45,9 @@ showProps(user);
 
 
 // Task 3
+console.log(' ');
+console.log('Task 3')
+
 class Person {
     constructor(name, surname) {
         this.name = name;
@@ -74,6 +81,7 @@ student1.showFullName("Petrovych");
 console.log("Current course: " + student1.showCourse()); 
 
 // Task 4
+console.log(' ');
 console.log('Task 4');
 
 class Worker {
@@ -125,13 +133,27 @@ console.log(worker3.fullName);
 console.log(worker3.showSalary());
 console.log("New experience: " + worker3.showExp);
 console.log(worker3.showSalaryWithExperience());
-worker3.setExp = 1.3;
+worker3.setExp = 1.4;
 console.log("New experience: " + worker3.showExp);
 console.log(worker3.showSalaryWithExperience());
 
-if(worker1.showExp < worker2.showExp && worker1.showExp < worker3.showExp) {
+let waorkerArray = [worker1, worker2, worker3];
+
+function sortArray(a, b) {
+    return a.showSalaryWithExperience() - b.showSalaryWithExperience();
+}
+
+waorkerArray.sort(sortArray);
+
+for(let i = 0; i < 3; i++) {
+    console.log(waorkerArray[i].fullName + ': ' + waorkerArray[i].showSalaryWithExperience());
+}
+
+console.log(' ');
+
+if(worker1.showSalaryWithExperience() < worker2.showSalaryWithExperience() && worker1.showSalaryWithExperience() < worker3.showSalaryWithExperience()) {
     
-    if(worker2.showExp < worker3.showExp) {
+    if(worker2.showSalaryWithExperience() < worker3.showSalaryWithExperience()) {
         console.log(worker1.fullName + ': ' + worker1.showSalaryWithExperience());
         console.log(worker2.fullName + ': ' + worker2.showSalaryWithExperience());
         console.log(worker3.fullName + ': ' + worker3.showSalaryWithExperience());
@@ -141,9 +163,9 @@ if(worker1.showExp < worker2.showExp && worker1.showExp < worker3.showExp) {
         console.log(worker2.fullName + ': ' + worker2.showSalaryWithExperience());
     }
 
-} else if(worker2.showExp < worker1.showExp && worker2.showExp < worker3.showExp) {
+} else if(worker2.showSalaryWithExperience() < worker1.showSalaryWithExperience() && worker2.showSalaryWithExperience() < worker3.showSalaryWithExperience()) {
    
-    if(worker1.showExp < worker3.showExp) {
+    if(worker1.showSalaryWithExperience() < worker3.showSalaryWithExperience()) {
         console.log(worker2.fullName + ': ' + worker2.showSalaryWithExperience());
         console.log(worker1.fullName + ': ' + worker1.showSalaryWithExperience());
         console.log(worker3.fullName + ': ' + worker3.showSalaryWithExperience());
@@ -153,9 +175,9 @@ if(worker1.showExp < worker2.showExp && worker1.showExp < worker3.showExp) {
         console.log(worker1.fullName + ': ' + worker1.showSalaryWithExperience());
     }
 
-} else if(worker3.showExp < worker1.showExp && worker3.showExp < worker2.showExp) {
+} else if(worker3.showSalaryWithExperience() < worker1.showSalaryWithExperience() && worker3.showSalaryWithExperience() < worker2.showSalaryWithExperience()) {
    
-    if(worker2.showExp < worker1.showExp) {
+    if(worker2.showSalaryWithExperience() < worker1.showSalaryWithExperience()) {
         console.log(worker3.fullName + ': ' + worker3.showSalaryWithExperience());
         console.log(worker2.fullName + ': ' + worker2.showSalaryWithExperience());
         console.log(worker1.fullName + ': ' + worker1.showSalaryWithExperience());
@@ -168,6 +190,9 @@ if(worker1.showExp < worker2.showExp && worker1.showExp < worker3.showExp) {
 } 
 
 // Task 5
+console.log(' ');
+console.log('Task 5');
+
 class GeometricFigure {
     getArea() {
         return 0;
