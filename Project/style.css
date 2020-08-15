@@ -1,0 +1,198 @@
+#header, #newHeader {
+    position: absolute;
+    width: 900px; 
+    height: 50px; 
+    left: 50%; 
+    top: 50%; 
+    margin-left: -450px; 
+    margin-top: -250px;	
+    background: #0ff; 
+    border: 1px solid #0ff; /* Параметри рамки*/
+    padding: 25px; /* Поля навколо тексту */ 
+    border-radius: 50px 50px 0 0;
+}
+
+#mainField, #newMainField {
+    position: absolute;
+    width: 900px; 
+    height: 305px; 
+    left: 50%; 
+    top: 60%; 
+    margin-left: -450px; 
+    margin-top: -250px;	
+    background: #0ff; 
+    border: 1px solid #0ff; /* Параметри рамки*/
+    padding: 25px; /* Поля навколо тексту */
+    overflow: auto; /* Додавання полоси прокрутки */ 
+}
+
+td {
+    width: 225px;
+    border-radius: 45%;
+}
+
+th{
+    width: 225px;
+    text-align: center;
+}
+
+
+#addButton, #newAddButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: fixed;
+    bottom: 220px;
+    right: 44%;  
+
+}
+
+#buttonDiv, #newButtonDiv {
+    position: absolute;
+    width: 900px; 
+    height: 50px; 
+    left: 50%; 
+    top: 98%; 
+    margin-left: -450px; 
+    margin-top: -250px;	
+    background: #0ff; 
+    border: 1px solid #0ff; /* Параметри рамки*/
+    padding: 25px; /* Поля навколо тексту */
+    border-radius: 0 0 50px 50px;
+    
+}
+
+#addFieldHidden {
+    visibility: hidden;
+}
+
+#addFieldVisible {
+    visibility: visible;
+}
+
+#firstFieldHidden {
+    visibility: hidden;
+}
+
+#firstFieldVisible {
+    visibility: visible;
+}
+
+#addDeviceHeaderTable {
+    width: 900px;    
+}
+
+.firstLine {
+    position: relative;
+    left: 100px;
+    width: 800px;
+}
+
+.firstLine div input {
+    position: absolute;
+}
+
+.secondLine{
+    position: relative;
+    left: 100px;
+    width: 800px;
+    top: 55px;
+}
+
+.secondLine div{
+    position: absolute;
+}
+
+.thirdLine{
+    position: relative;
+    left: 100px;
+    width: 800px;
+    top: 110px;
+}
+
+.thirdLine div{
+    position: absolute;
+}
+
+.fourthLine{
+    position: relative;
+    left: 100px;
+    width: 800px;
+    top: 165px;
+}
+
+.fourthLine div{
+    position: absolute;
+}
+
+.fifthLine{
+    position: relative;
+    left: 100px;
+    width: 800px;
+    top: 220px;
+}
+
+.fifthLine div{
+    position: absolute;
+}
+
+.sixthLine{
+    position: relative;
+    left: 100px;
+    width: 800px;
+    top: 275px;
+}
+
+.sixthLine div{
+    position: absolute;
+}
+
+#secondLineFirstColumn, #thirdLineFirstColumn, #fourthLineFirstColumn, #fifthLineFirstColumn {
+    left: 0;
+    right: 200px;
+    width: 200px;
+    height: 30px;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    line-height: 30px;
+    
+}
+
+#secondLineSecondColumn, #thirdLineSecondColumn, #fourthLineSecondColumn, #fifthLineSecondColumn {
+    width: 200px;
+    right: 350px; 
+    height: 30px;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    line-height: 30px;    
+}
+
+#secondLineThirdColumn, #thirdLineThirdColumn, #fourthLineThirdColumn, #fifthLineThirdColumn {
+    width: 200px;
+    right: 100px; 
+    height: 30px;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.greenBackground {
+    background: rgb(21, 231, 21); 
+}
+
+.whiteBackground {
+    background: white; 
+}
+
+#nameInput {
+    width: 690px;
+    height: 15px;
+    line-height: 30px; 
+}
+
+#whatCanDoDiv {
+    position: relative;
+    left: 350px;
+    width: 200px;
+    top: 30px;
+}

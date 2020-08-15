@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet">
+    <title>Project</title>        
+</head>
+<body>  
+    
+    <div id = "firstFieldVisible">
+
+        <div id = "header">
+            <table cellspacing="5px" cellpadding="15px">
+                <tr>
+                    <th class = "nameField">Device Name</td>
+                    <th class = "nameField">Current Status</td>
+                    <th class = "nameField">New Status</td>
+                    <th class = "nameField">Confirmation Button</td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="mainField">
+
+            <table id = "table" cellspacing="5px" cellpadding="15px"> 
+                               
+            </table>
+                        
+        </div>
+
+        <div id = "buttonDiv">
+            <button id = "addButton">Add new device</button>
+        </div> 
+
+    </div>
+
+    <div id = "addFieldHidden">
+            
+        <div id = "newHeader">
+            <table id = "addDeviceHeaderTable" cellspacing="5px" cellpadding="15px">
+                <th> Enter a name for the new device and select its features </th>
+            </table>
+        </div>
+
+        
+        <div id = "newMainField">
+
+            <div class = "firstLine">
+                <div id = "firstLinefirstColumn">Enter a name for the device:</div>
+                <input id = "nameInput" type="text">
+            </div>
+
+            <div id = "whatCanDoDiv">
+                Choose what the device can do
+            </div>
+
+            <div class = "secondLine">
+                <div class = "greenBackground" id = "secondLineFirstColumn">Activate/Deactivate</div>
+                <div class = "whiteBackground" id = "secondLineSecondColumn">Open settings</div>
+                <div class = "whiteBackground" id = "secondLineThirdColumn">Change the temperature</div>                
+            </div>
+
+            <div class = "thirdLine">
+                <div class = "whiteBackground" id = "thirdLineFirstColumn">Operate the curtains</div>
+                <div class = "whiteBackground" id = "thirdLineSecondColumn">Control the light</div>
+                <div class = "whiteBackground" id = "thirdLineThirdColumn">Switch channels</div>                
+            </div>
+
+            <div class = "fourthLine">
+                <div class = "whiteBackground" id = "fourthLineFirstColumn">Get a list of channels</div>
+                <div class = "whiteBackground" id = "fourthLineSecondColumn">Open settings</div>
+                <div class = "whiteBackground" id = "fourthLineThirdColumn"></div>                
+            </div>
+
+            <div class = "fifthLine">
+                <div class = "whiteBackground" id = "fifthLineFirstColumn"></div>
+                <div class = "whiteBackground" id = "fifthLineSecondColumn"></div>
+                <div class = "whiteBackground" id = "fifthLineThirdColumn"></div>                
+            </div>
+
+        </div>
+
+        <div id = "newButtonDiv">
+            <button id = "newAddButton">Add new device</button>
+        </div> 
+    
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
