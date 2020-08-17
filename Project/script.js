@@ -14,10 +14,12 @@ document.getElementById(`fifthLineFirstColumn`).addEventListener(`click`, change
 document.getElementById(`fifthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
 document.getElementById(`fifthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
 
+document.addEventListener("DOMContentLoaded", pageLoaded);
+
 
 let allDevices = [];
-let deviceName = Symbol(`deviceName`);
-let currentStatus = Symbol(`currentStatus`);
+let allDeviceNames = [];
+let allDeviceCurrentStatus = [];
 
 function hideFirstField() {
     document.getElementById(`firstFieldVisible`).id = 'firstFieldHidden';
@@ -42,22 +44,32 @@ function changeButtonColor(event) {
     }
 }
 
+function changeButtonColorAfterAddDevice() {
+    let greenFields = document.getElementsByClassName(`greenBackground`);
+
+    for(let i = greenFields.length - 1; i > -1; i--) {
+        greenFields[i].className = `whiteBackground`;
+    }
+}
+
 function createNewDevice() {
     if(document.getElementById(`nameInput`).value != ``){
-        let newDevice = {
-            [deviceName]: document.getElementById(`nameInput`).value,
-            [currentStatus]: `Active`,
-        };
+        let newDeviceName = document.getElementById(`nameInput`).value;
+        let newDevice = {};
+        let newDeviceStatus = `Active`;
+
+        newDevice.activate = `Active`;
+        newDevice.deactivate = `Not active`;
 
         let greenFields = document.getElementsByClassName(`greenBackground`);
 
         for(let i = 0; i < greenFields.length; i++){
             
             switch(greenFields[i].innerHTML){
-                case `Activate/Deactivate`:
-                    newDevice.activate = `Active`;
-                    newDevice.deactivate = `Not active`;
-                    break;
+                // case `Activate/Deactivate`:
+                //     newDevice.activate = `Active`;
+                //     newDevice.deactivate = `Not active`;
+                //     break;
                 case `Open settings`:
                     newDevice.openSettings = `Settings have been opened`;
                     break;
@@ -72,26 +84,39 @@ function createNewDevice() {
         }
 
         allDevices[allDevices.length] = newDevice;
-        console.log(allDevices);
-        addDevices();
+        allDeviceNames[allDeviceNames.length] = newDeviceName;
+        allDeviceCurrentStatus[allDeviceCurrentStatus.length] = newDeviceStatus;
+        
+        localStorage.clear();
+        localStorage.setItem(`latestList`, JSON.stringify(allDevices));
+        localStorage.setItem(`names`, JSON.stringify(allDeviceNames));
+        localStorage.setItem(`conditions`, JSON.stringify(allDeviceCurrentStatus));
+
+        changeButtonColorAfterAddDevice();
+        refreshDevicesList();
     }
 }
 
 
 
-function addDevices() {
+function refreshDevicesList() {
     document.getElementById(`table`).innerHTML = ``;
 
     let counter = 0;
+
+    allDevices = JSON.parse(localStorage.getItem(`latestList`));
+    allDeviceNames = JSON.parse(localStorage.getItem(`names`));
+    allDeviceCurrentStatus = JSON.parse(localStorage.getItem(`conditions`));        
+   
 
     if(allDevices.length != 0) {
         for(let i = 0; i < allDevices.length; i++) {
             let buffer = document.getElementById(`table`).innerHTML;
 
             document.getElementById(`table`).innerHTML = buffer + `<tr class = "${counter}">
-            <td>${allDevices[i][deviceName]}</td>
-            <td id = "statusTd${counter}">${allDevices[i][currentStatus]}</td>
-            <td class = "selectorTd${counter}"></td>
+            <td>${allDeviceNames[i]}</td>
+            <td id = "statusTd${counter}">${allDeviceCurrentStatus[i]}</td>
+            <td id = "selectorTd${counter}"></td>
             <td><button id = "button${counter}" onclick = "changeStatus(${counter})">Change status</button></td>
             </tr>`;
 
@@ -107,7 +132,7 @@ function addDevices() {
             let newOption = new Option(`Delete`);
             newSelect.append(newOption);
 
-            document.getElementsByClassName(`selectorTd${counter}`)[0].append(newSelect);
+            document.getElementById(`selectorTd${counter}`).append(newSelect);
 
             counter++;
         }
@@ -122,17 +147,37 @@ function changeStatus(i) {
         switch(newStatus){
             case `Active`:
                 document.getElementById(`statusTd${i}`).innerHTML = `Active`;
-                allDevices[i][currentStatus] = `Active`;
+                allDeviceCurrentStatus[i] = `Active`;
                 break;
             case `Not active`:
                 document.getElementById(`statusTd${i}`).innerHTML = `Not active`;
-                allDevices[i][currentStatus] = `Not active`;
+                allDeviceCurrentStatus[i] = `Not active`;
                 break;
             default:
                 break;
         }
+
+        localStorage.clear();
+        localStorage.setItem(`latestList`, JSON.stringify(allDevices));
+        localStorage.setItem(`names`, JSON.stringify(allDeviceNames));
+        localStorage.setItem(`conditions`, JSON.stringify(allDeviceCurrentStatus));
+
     } else {
         allDevices.splice(i, 1);
-        addDevices()
-    }
+        allDeviceNames.splice(i, 1);
+        allDeviceCurrentStatus.splice(i, 1);
+        
+
+        localStorage.clear();
+        localStorage.setItem(`latestList`, JSON.stringify(allDevices));
+        localStorage.setItem(`names`, JSON.stringify(allDeviceNames));
+        localStorage.setItem(`conditions`, JSON.stringify(allDeviceCurrentStatus));
+
+        refreshDevicesList();
+    }   
+
+}
+
+function pageLoaded() {
+    refreshDevicesList();
 }

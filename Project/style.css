@@ -176,11 +176,11 @@ th{
     line-height: 30px;
 }
 
-.greenBackground {
+div.greenBackground, div.greenBackgroundConstant {
     background: rgb(21, 231, 21); 
 }
 
-.whiteBackground {
+div.whiteBackground {
     background: white; 
 }
 
