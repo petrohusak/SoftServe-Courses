@@ -7,8 +7,8 @@
     margin-left: -450px; 
     margin-top: -250px;	
     background: #0ff; 
-    border: 1px solid #0ff; /* Параметри рамки*/
-    padding: 25px; /* Поля навколо тексту */ 
+    border: 1px solid #0ff;
+    padding: 25px; 
     border-radius: 50px 50px 0 0;
 }
 
@@ -21,9 +21,9 @@
     margin-left: -450px; 
     margin-top: -250px;	
     background: #0ff; 
-    border: 1px solid #0ff; /* Параметри рамки*/
-    padding: 25px; /* Поля навколо тексту */
-    overflow: auto; /* Додавання полоси прокрутки */ 
+    border: 1px solid #0ff;
+    padding: 25px;
+    overflow: auto;
 }
 
 td {
@@ -36,15 +36,12 @@ th{
     text-align: center;
 }
 
-
-#addButton, #newAddButton {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    position: fixed;
-    bottom: 220px;
-    right: 44%;  
-
+button {
+    height: 25px;
+    width: 150px;
+    border-radius: 50px 50px 50px 50px;
+    background-color: rgb(21, 231, 21);
+    border: 1px;
 }
 
 #buttonDiv, #newButtonDiv {
@@ -56,10 +53,21 @@ th{
     margin-left: -450px; 
     margin-top: -250px;	
     background: #0ff; 
-    border: 1px solid #0ff; /* Параметри рамки*/
-    padding: 25px; /* Поля навколо тексту */
-    border-radius: 0 0 50px 50px;
-    
+    border: 1px solid #0ff;
+    padding: 25px; 
+    border-radius: 0 0 50px 50px;    
+}
+
+button#addButton, button#newAddButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    height: 40px;
+    width: 150px;
+    border-radius: 50px 50px 50px 50px;
+    background-color: rgb(21, 231, 21);
+    border: 1px;
 }
 
 #addFieldHidden {
@@ -195,4 +203,27 @@ div.whiteBackground {
     left: 350px;
     width: 200px;
     top: 30px;
+}
+
+select {
+    width: 225px;
+}
+
+td {
+    text-align: center;
+}
+
+.buttonStyle {
+    width: 200px;
+}
+
+.statusTdStyle {
+    width: 150px;
+    text-align: left;
+}
+
+.nameTdStyle {
+    width: 225px;
+    text-align: left;
+    cellp
 }

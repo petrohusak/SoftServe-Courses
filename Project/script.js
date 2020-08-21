@@ -10,9 +10,9 @@ document.getElementById(`thirdLineThirdColumn`).addEventListener(`click`, change
 document.getElementById(`fourthLineFirstColumn`).addEventListener(`click`, changeButtonColor);
 document.getElementById(`fourthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
 document.getElementById(`fourthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
-document.getElementById(`fifthLineFirstColumn`).addEventListener(`click`, changeButtonColor);
-document.getElementById(`fifthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
-document.getElementById(`fifthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
+// document.getElementById(`fifthLineFirstColumn`).addEventListener(`click`, changeButtonColor);
+// document.getElementById(`fifthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
+// document.getElementById(`fifthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
 
 document.addEventListener("DOMContentLoaded", pageLoaded);
 
@@ -56,28 +56,46 @@ function createNewDevice() {
     if(document.getElementById(`nameInput`).value != ``){
         let newDeviceName = document.getElementById(`nameInput`).value;
         let newDevice = {};
-        let newDeviceStatus = `Active`;
+        let newDeviceStatus = `Activate`;
 
-        newDevice.activate = `Active`;
-        newDevice.deactivate = `Not active`;
+        newDevice.activate = `Activate`;
+        newDevice.deactivate = `Deactivate`;
 
         let greenFields = document.getElementsByClassName(`greenBackground`);
 
         for(let i = 0; i < greenFields.length; i++){
             
             switch(greenFields[i].innerHTML){
-                // case `Activate/Deactivate`:
-                //     newDevice.activate = `Active`;
-                //     newDevice.deactivate = `Not active`;
-                //     break;
                 case `Open settings`:
-                    newDevice.openSettings = `Settings have been opened`;
+                    newDevice.openSetting = `Open settings`;
                     break;
                 case `Change the temperature`:
-                    newDevice.addTemperature = `Increases temperature`;
-                    newDevice.reduceTheTemperature = `Reduces temperature`;
+                    newDevice.addTemperature = `Raise the temperature`;
+                    newDevice.reduceTheTemperature = `Reduce the temperature`;
                     break;
                     
+                case `Operate the curtains`:
+                    newDevice.raiseBlinds = `Raise the blinds`;
+                    newDevice.lowerBlinds = `Lower the blinds`;
+                    break;
+                case `Control the light`:
+                    newDevice.increaseBrightness = `Increase brightness`;
+                    newDevice.reduceBrightness = `Reduce brightness`;
+                    break;
+                case `Switch channels`:
+                    newDevice.goToNextChannel = `Go to the next channel`;
+                    newDevice.goToPreviousChannel = `Go to the previous channel`;
+                    break;
+                case `Get a list of channels`:
+                    newDevice.displayChannelsList = `Display a list of channels`;
+                    break;
+                case `Control the sound`:
+                    newDevice.increaseVolume = `Increase the volume`;
+                    newDevice.turnDownVolume = `Turn down the volume`;
+                    break;
+                case `Display temperature`:
+                    newDevice.displayTemperature = `Display temperature`;
+                    break;
                 default:
                     break;
             }
@@ -97,8 +115,6 @@ function createNewDevice() {
     }
 }
 
-
-
 function refreshDevicesList() {
     document.getElementById(`table`).innerHTML = ``;
 
@@ -114,10 +130,10 @@ function refreshDevicesList() {
             let buffer = document.getElementById(`table`).innerHTML;
 
             document.getElementById(`table`).innerHTML = buffer + `<tr class = "${counter}">
-            <td>${allDeviceNames[i]}</td>
-            <td id = "statusTd${counter}">${allDeviceCurrentStatus[i]}</td>
-            <td id = "selectorTd${counter}"></td>
-            <td><button id = "button${counter}" onclick = "changeStatus(${counter})">Change status</button></td>
+            <td class = "nameTdStyle" nowrap>${allDeviceNames[i]}</td>
+            <td id = "statusTd${counter}" class = "statusTdStyle" nowrap>${allDeviceCurrentStatus[i]}</td>
+            <td id = "selectorTd${counter}" nowrap></td>
+            <td  class = "buttonStyle" nowrap><button id = "button${counter}" onclick = "changeStatus(${counter})">Change status</button></td>
             </tr>`;
 
             buffer = document.getElementById(`table`).innerHTML;
@@ -145,13 +161,68 @@ function changeStatus(i) {
 
     if(newStatus != `Delete`) {
         switch(newStatus){
-            case `Active`:
+            case `Activate`:
                 document.getElementById(`statusTd${i}`).innerHTML = `Active`;
                 allDeviceCurrentStatus[i] = `Active`;
                 break;
-            case `Not active`:
+            case `Deactivate`:
                 document.getElementById(`statusTd${i}`).innerHTML = `Not active`;
                 allDeviceCurrentStatus[i] = `Not active`;
+                break;
+            case `Open settings`:
+                document.getElementById(`statusTd${i}`).innerHTML = `Settings have been opened`;
+                allDeviceCurrentStatus[i] = `Settings have been opened`;
+                openSettings();
+                break;
+            case `Raise the temperature`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The temperature was increased`;
+                allDeviceCurrentStatus[i] = `The temperature was increased`;
+                break;
+            case `Reduce the temperature`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The temperature was reduced`;
+                allDeviceCurrentStatus[i] = `The temperature was reduced`;
+                break; 
+            case `Raise the blinds`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The blinds were raised`;
+                allDeviceCurrentStatus[i] = `The blinds were raised`;
+                break;
+            case `Lower the blinds`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The blinds were lowered`;
+                allDeviceCurrentStatus[i] = `The blinds were lowered`;
+                break;  
+            case `Increase brightness`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The lighting was increased`;
+                allDeviceCurrentStatus[i] = `The lighting was increased`;
+                break; 
+            case `Reduce brightness`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The lighting was reduced`;
+                allDeviceCurrentStatus[i] = `The lighting was reduced`;
+                break; 
+            case `Go to the next channel`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The next channel was turned on`;
+                allDeviceCurrentStatus[i] = `The next channel was turned on`;
+                break;
+            case `Go to the previous channel`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The previous channel was turned on`;
+                allDeviceCurrentStatus[i] = `The previous channel was turned on`;
+                break;
+            case `Display a list of channels`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The channel list has been displayed`;
+                allDeviceCurrentStatus[i] = `The channel list has been displayed`;
+                displayChannelsList();
+                break;
+            case `Increase the volume`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The sound was amplified`;
+                allDeviceCurrentStatus[i] = `The sound was amplified`;
+                break;
+            case `Turn down the volume`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The sound was reduced`;
+                allDeviceCurrentStatus[i] = `The sound was reduced`;
+                break;
+            case `Display temperature`:
+                document.getElementById(`statusTd${i}`).innerHTML = `The temperature was shown`;
+                allDeviceCurrentStatus[i] = `The temperature was shown`;
+                showTemperature();
                 break;
             default:
                 break;
@@ -180,4 +251,17 @@ function changeStatus(i) {
 
 function pageLoaded() {
     refreshDevicesList();
+}
+
+// openSettings();
+function openSettings() {
+    window.open(`options.html`, `Options`, ` resizable=0,width=470,height=470`);
+} 
+
+function displayChannelsList() {
+    alert(`Channel list:\n1. Новий канал\n2. СТБ\n3. 1+1\n4. Інтер\n5. К1\n6. ICTV\n7. НЛО TV\n8. TET\n9. 5 канал\n10. РАДА`)
+}
+
+function showTemperature() {
+    alert(`Current temperature: ${Math.floor( Math.random() * (30 - 10) + 10)}C`);
 }

@@ -1,0 +1,52 @@
+.pageStyle {
+    position: absolute;
+    width: 400px; 
+    height: 370px; 
+    background: #0ff; 
+    border: 1px solid #0ff; 
+    padding: 25px;
+    border-radius: 50px 50px 50px 50px;
+}
+
+.header {
+    font-size: 50px;
+    text-align: center;
+    height: 80px;
+}
+
+.firstColumn {
+    float: left;
+    width: 200px;
+    text-align: left;
+    height: 50px;
+}
+
+.secondColumn {
+    float: right;
+    width: 200px;
+    text-align: center;
+    height: 50px;
+}
+
+.closeButton {
+    font-size: 30px;
+    text-align: center;
+    height: 50px;
+}
+
+.leftSideText {
+    text-align: left;
+}
+
+select {
+    width: 200px;
+}
+
+button {
+    height: 40px;
+    width: 150px;
+    border-radius: 50px 50px 50px 50px;
+    background-color: rgb(21, 231, 21);
+    border: 1px;
+
+}
