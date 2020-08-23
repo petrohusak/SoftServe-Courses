@@ -1,4 +1,4 @@
-window.onresize = function() {
+window.onresize = function() {    //causes the window to remain the same size
     window.resizeTo(485,535);
 }
 

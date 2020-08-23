@@ -10,24 +10,20 @@ document.getElementById(`thirdLineThirdColumn`).addEventListener(`click`, change
 document.getElementById(`fourthLineFirstColumn`).addEventListener(`click`, changeButtonColor);
 document.getElementById(`fourthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
 document.getElementById(`fourthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
-// document.getElementById(`fifthLineFirstColumn`).addEventListener(`click`, changeButtonColor);
-// document.getElementById(`fifthLineSecondColumn`).addEventListener(`click`, changeButtonColor);
-// document.getElementById(`fifthLineThirdColumn`).addEventListener(`click`, changeButtonColor);
 
 document.addEventListener("DOMContentLoaded", pageLoaded);
-
 
 let allDevices = [];
 let allDeviceNames = [];
 let allDeviceCurrentStatus = [];
 
-function hideFirstField() {
+function hideFirstField() {              //the function makes the field with the device added visible, and invisible - with all previously added devices
     document.getElementById(`firstFieldVisible`).id = 'firstFieldHidden';
     document.getElementById(`addFieldHidden`).id = 'addFieldVisible';
     document.getElementById(`nameInput`).value = ``;
 }
 
-function showFirstField() {
+function showFirstField() {              //function that is inverted to the previous one
     if(document.getElementById(`nameInput`).value == ``){
         alert(`You must fill in the field with the device name`);
     } else {
@@ -36,7 +32,7 @@ function showFirstField() {
     }
 }
 
-function changeButtonColor(event) {
+function changeButtonColor(event) {      //the function changes the color of the button when it is pressed in the add device field
     if(event.currentTarget.className == `whiteBackground`) {
         event.currentTarget.className = `greenBackground`;
     } else if(event.currentTarget.className == `greenBackground`) {
@@ -44,7 +40,7 @@ function changeButtonColor(event) {
     }
 }
 
-function changeButtonColorAfterAddDevice() {
+function changeButtonColorAfterAddDevice() {  //the function changes the color of the button to white after adding a new device
     let greenFields = document.getElementsByClassName(`greenBackground`);
 
     for(let i = greenFields.length - 1; i > -1; i--) {
@@ -52,7 +48,7 @@ function changeButtonColorAfterAddDevice() {
     }
 }
 
-function createNewDevice() {
+function createNewDevice() {  // a function that creates a new device by assigning it a name and properties according to the selected ones
     if(document.getElementById(`nameInput`).value != ``){
         let newDeviceName = document.getElementById(`nameInput`).value;
         let newDevice = {};
@@ -115,7 +111,7 @@ function createNewDevice() {
     }
 }
 
-function refreshDevicesList() {
+function refreshDevicesList() {      //a feature that deletes and re-creates a list of all available devices and their properties   
     document.getElementById(`table`).innerHTML = ``;
 
     let counter = 0;
@@ -155,7 +151,7 @@ function refreshDevicesList() {
     }
 }
 
-function changeStatus(i) {
+function changeStatus(i) {      //function that changes the status of the device in the list according to the status selected in the drop-down menu
     let newStatusSelector = document.getElementsByTagName(`select`)[i];
     let newStatus = newStatusSelector.options[newStatusSelector.selectedIndex].text
 
@@ -253,7 +249,6 @@ function pageLoaded() {
     refreshDevicesList();
 }
 
-// openSettings();
 function openSettings() {
     window.open(`options.html`, `Options`, ` resizable=0,width=470,height=470`);
 } 
